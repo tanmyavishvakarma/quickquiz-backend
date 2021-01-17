@@ -1,12 +1,12 @@
 const mongoose = require('mongoose')
 
 const leader = new mongoose.Schema({
-    username:{
+    publisher:{
         type:String,
         required:true
     },
     points:{
-        type:Number,
+        type:String,
         required:true
     },
     date:{

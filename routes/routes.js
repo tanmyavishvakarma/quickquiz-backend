@@ -2,6 +2,7 @@ const { request, response } = require('express')
 const express=require('express')
 const router = express.Router()
 const registertemplatecopy=require('../models/user')
+const leadertemplate=require('../models/leader')
 const bcryt=require('bcrypt')
 const passport=require("passport")
 const cookieparser=require('cookie-parser')
@@ -41,5 +42,23 @@ router.post("/login", (req, res, next) => {
       }
     })(req, res, next);
   });
+
+  router.post('/result',async(request,response,next)=>{
+    
+    const result=new leadertemplate({
+        points:request.body.points,
+        publisher:request.body.publisher,
+     
+    })
+    result.save()
+    .then(data=>{
+        response.json(data)
+
+    })
+    .catch(error=>{
+        response.json(error)
+    })
+});
+
 
 module.exports=router
