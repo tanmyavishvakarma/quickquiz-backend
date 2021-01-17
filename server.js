@@ -35,6 +35,8 @@ require('./passport-config')(passport);
 app.use(express.json())
 app.use('/api',routes)
 
-app.listen(3001,()=>console.log("server running on port 3001"))
+
+const port_number = process.env.PORT || 5000;
+app.listen(port_number);
 
 module.exports = app;
