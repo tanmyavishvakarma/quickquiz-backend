@@ -60,5 +60,19 @@ router.post("/login", (req, res, next) => {
     })
 });
 
+router.get('/leaderboard', async function (req, res) {
+  leadertemplate.find()
+    .sort({ points: -1 })
+    .limit(3)
+    .then(posts => {
+      res.json(posts)
+      res.send(posts)
+      
+    })
+    .catch(err => {
+      console.log(err)
+    })
+});
+
 
 module.exports=router
